@@ -33,9 +33,9 @@ if (new URLSearchParams(window.location.search).get("clear"))
 	localStorage.clear();
 }
 else
-{	
+{
 	// this code is essential to circumvent that some browsers preload the content of some pages before you actually hit the url
-	document.addEventListener("visibilitychange", () => 
+	document.addEventListener("visibilitychange", () =>
 	{
 		if (document.visibilityState != 'hidden' && !initialized)
 		{
@@ -54,7 +54,7 @@ else
 	{
 		initialized = true;
 
-		// add a short timeout because window.offsetX reports wrong values before a short period 
+		// add a short timeout because window.offsetX reports wrong values before a short period
 		setTimeout(() => {
 			setupScene();
 			setupWindowManager();
@@ -62,13 +62,13 @@ else
 			updateWindowShape(false);
 			render();
 			window.addEventListener('resize', resize);
-		}, 500)	
+		}, 500)
 	}
 
 	function setupScene ()
 	{
 		camera = new t.OrthographicCamera(0, 0, window.innerWidth, window.innerHeight, -10000, 10000);
-		
+
 		camera.position.z = 2.5;
 		near = camera.position.z - .5;
 		far = camera.position.z + 0.5;
@@ -79,8 +79,8 @@ else
 
 		renderer = new t.WebGLRenderer({antialias: true, depthBuffer: true});
 		renderer.setPixelRatio(pixR);
-	    
-	  	world = new t.Object3D();
+
+		world = new t.Object3D();
 		scene.add(world);
 
 		renderer.domElement.setAttribute("id", "scene");
@@ -189,7 +189,7 @@ else
 	{
 		let width = window.innerWidth;
 		let height = window.innerHeight
-		
+
 		camera = new t.OrthographicCamera(0, width, 0, height, -10000, 10000);
 		camera.updateProjectionMatrix();
 		renderer.setSize( width, height );
